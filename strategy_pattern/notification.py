@@ -13,3 +13,6 @@ class SMSNotification(NotificationStrategy):
     def senf(self, message:str):
         print(f"Sending SMS: {message}")
 
+class PushNotification(NotificationStrategy):
+    def send(self, message:str):
+        print(f"Sending Push Notification: {message}")
