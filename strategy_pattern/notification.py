@@ -4,3 +4,8 @@ class NotificationStrategy(ABC):
     @abstractmethod
     def send(self, message: str):
         pass
+
+class EmailNotification(NotificationStrategy):
+    def send(self, message:str):
+        print(f"Sending email: {message}")
+        
