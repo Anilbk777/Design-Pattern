@@ -8,4 +8,8 @@ class NotificationStrategy(ABC):
 class EmailNotification(NotificationStrategy):
     def send(self, message:str):
         print(f"Sending email: {message}")
-        
+
+class SMSNotification(NotificationStrategy):
+    def senf(self, message:str):
+        print(f"Sending SMS: {message}")
+
