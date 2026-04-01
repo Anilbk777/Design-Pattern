@@ -26,3 +26,17 @@ class NotificationContext:
 
     def notify(self, message:str):
         self._strategy.send(message)
+
+if __name__ == "__main__":
+    email_notification = EmailNotification()
+    sms_notification = SMSNotification()
+    push_notification = PushNotification()
+
+    context = NotificationContext(email_notification)
+    context.notify("This is an email notification")
+
+    context.set_strategy(sms_notification)
+    context.notify("This is an SMS notification")
+
+    context.set_strategy(push_notification)
+    context.notify("This is a push notification")
