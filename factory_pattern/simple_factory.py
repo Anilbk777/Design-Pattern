@@ -40,5 +40,5 @@ if __name__ == "__main__":
     burger = factory.create_burger("mixed")
     burger.prepare()
 
-    burger = factory.create_burger("beef")
-    burger.prepare()
+    # burger = factory.create_burger("beef")
+    # burger.prepare()
