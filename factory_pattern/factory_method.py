@@ -71,10 +71,10 @@ if __name__ == "__main__":
     chicago_store = ChicagoPizzaStore()
 
     pizza1 = ny_store.order_pizza("cheese")
-    pizza1
+    print(pizza1)
 
     pizza2 = chicago_store.order_pizza("pepperoni")
-    pizza2
+    print(pizza2)
 
     
 
