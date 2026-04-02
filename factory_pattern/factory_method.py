@@ -66,6 +66,16 @@ class ChicagoPizzaStore(PizzaStore):
             raise ValueError(f"Unknow Chicago pizza type: {pizza_type}")
         
 
+if __name__ == "__main__":
+    ny_store = NYPizzaStore()
+    chicago_store = ChicagoPizzaStore()
+
+    pizza1 = ny_store.order_pizza("cheese")
+    pizza1
+
+    pizza2 = chicago_store.order_pizza("pepperoni")
+    pizza2
+
     
 
 
