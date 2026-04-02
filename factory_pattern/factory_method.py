@@ -53,6 +53,18 @@ class NYPizzaStore(PizzaStore):
             raise ValueError(f"Unknow NY pizza type: {pizza_type}")
         
 
+class ChicagoPizzaStore(PizzaStore):
+    def create_pizza(self, pizza_type):
+
+        if pizza_type == "cheese":
+            return ChicagoCheesePizza()
+
+        elif pizza_type == "pepperoni":
+            return ChicagoPepperoniPizza()
+        
+        else:
+            raise ValueError(f"Unknow Chicago pizza type: {pizza_type}")
+        
 
     
 
