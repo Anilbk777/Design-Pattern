@@ -1,13 +1,13 @@
 from .menu_item import MenuItem
 
-class Resturant:
-    RESTURANT_ID = 0
+class Restaurant:
+    RESTAURANT_ID = 0
 
     def __init__(self, name:str, address: str):
         self._name = name
         self._address = address
         self._menu: list[MenuItem] = []
-        Resturant.RESTURANT_ID += 1
+        Restaurant.RESTAURANT_ID += 1
 
 
     @property
