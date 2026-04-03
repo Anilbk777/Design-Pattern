@@ -4,22 +4,22 @@ class MenuItem:
         self._name = name
         self._price = price
 
-    @property
-    def code(self):
+    
+    def get_code(self):
         return self._code
 
     def set_code(self, c: str):
         self._code = c
 
-    @property
-    def name(self):
+    
+    def get_name(self):
         return self._name
 
     def set_name(self, n: str):
         self._name = n
 
-    @property
-    def price(self):
+   
+    def get_price(self):
         return self._price
 
     def set_price(self, p: float):

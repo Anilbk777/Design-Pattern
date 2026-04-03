@@ -9,23 +9,21 @@ class Restaurant:
         self._menu: list[MenuItem] = []
         self.restaurant_id = Restaurant.RESTAURANT_ID + 1
 
-
-    @property
-    def name(self):
+    def get_name(self):
         return self._name
     
     def set_name(self, n:str):
         self._name = n
 
-    @property
-    def address(self):
+  
+    def get_location(self):
         return self._address
     
     def set_address(self,addr:str):
         self._address =addr
 
-    @property
-    def menu(self):
+    
+    def get_menu(self):
         return self._menu.copy()
     
     def add_menu_item(self,menu_item:MenuItem):
