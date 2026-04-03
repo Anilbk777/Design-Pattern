@@ -4,6 +4,9 @@ from .singleton import singleton
 @singleton
 class OrderManager:
 
+    def __init__(self):
+        self.orders:list[Order] = []
+
     def add_order(self, order: "Order"):
         self.orders.append(order)
 
