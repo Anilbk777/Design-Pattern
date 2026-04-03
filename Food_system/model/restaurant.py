@@ -7,7 +7,7 @@ class Restaurant:
         self._name = name
         self._address = address
         self._menu: list[MenuItem] = []
-        Restaurant.RESTAURANT_ID += 1
+        self.restaurant_id = Restaurant.RESTAURANT_ID + 1
 
 
     @property
