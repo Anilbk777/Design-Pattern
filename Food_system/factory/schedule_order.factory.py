@@ -1,6 +1,6 @@
 from typing import List, Optional
 from order_factory import OrderFactory
-from model import User, Cart, Restaurant, MenuItem, Order
+from model import User, Cart, Restaurant, MenuItem, Order, DeliveryOrder, PickupOrder
 from ..strategies.payment_strategy import PaymentStrategy
 
 
