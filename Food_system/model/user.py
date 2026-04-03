@@ -34,5 +34,6 @@ class User:
     def set_address(self, address: str):
         self._address = address
 
-    def get_cart(self) -> Optional[Cart]:
+    @property
+    def cart(self) -> Optional[Cart]:
         return self._cart
