@@ -1,13 +1,13 @@
 from model import *
-from .strategies.payment_strategy import PaymentStrategy
+from strategies.payment_strategy import PaymentStrategy
 
-from .services.notification_services import NotificationService
+from services.notification_services import NotificationService
 
-from .factory.now_order_factory import NowOrderFactory
-from .factory.schedule_order_factory import ScheduledOrderFactory
+from factory.now_order_factory import NowOrderFactory
+from factory.schedule_order_factory import ScheduledOrderFactory
 
-from .Manager.order_manager import OrderManager
-from .Manager.restaurant_manager import RestaurantManager
+from Manager.order_manager import OrderManager
+from Manager.restaurant_manager import RestaurantManager
 from datetime import datetime
 from typing import List, Optional
 
@@ -42,8 +42,10 @@ class FoodApp:
         return RestaurantManager().search_by_location(location)
 
     def select_restaurant(self, user: User, restaurant: Restaurant):
-        cart = user.get_cart()
-        cart.set_restaurant(restaurant)
+        if user.get_cart() is None:
+            user.create_cart(restaurant)   # create + assign
+        else:
+            user.get_cart().set_restaurant(restaurant)
 
     def add_to_cart(self, user: User, item_code: str):
         restaurant = user.get_cart().get_restaurant()

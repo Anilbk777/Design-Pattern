@@ -4,7 +4,7 @@ from .order import Order
 from .restaurant import Restaurant
 from .user import User
 from .delivery_order import DeliveryOrder
-from  .pick_up_order import PickupOrder
+from .pick_up_order import PickupOrder
 
 __all__ = [
     "Cart",

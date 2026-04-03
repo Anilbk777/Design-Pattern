@@ -1,6 +1,6 @@
 from food_app import FoodApp
-from .model.user import User
-from .strategies.esewa_payment_strategy import EsewaPaymentStrategy
+from model.user import User
+from strategies.esewa_payment_strategy import EsewaPaymentStrategy
 
 
 def main():

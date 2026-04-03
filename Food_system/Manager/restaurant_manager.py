@@ -1,5 +1,5 @@
 from .singleton import singleton
-from ..model.restaurant import Restaurant
+from model import Restaurant
 
 @singleton
 class RestaurantManager:  
@@ -10,6 +10,10 @@ class RestaurantManager:
     def add_restaurant(self, resturant:Restaurant):
         self._restaurants.append(resturant)
 
-    def search_by_address(self, addr:str):
-        result = [resturant for resturant in self._restaurants if resturant.address.lower() == addr.lower()]
+    def search_by_location(self, addr:str):
+        result = [
+            resturant
+            for resturant in self._restaurants
+            if resturant.get_location().lower() == addr.lower()
+        ]
         return result

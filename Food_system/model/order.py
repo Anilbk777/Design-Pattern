@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from .user import User
 from .restaurant import Restaurant
 from .menu_item import MenuItem
-from ..strategies.payment_strategy import PaymentStrategy
+from strategies.payment_strategy import PaymentStrategy
 
 class Order(ABC):
     next_order_id = 0  # class-level static variable

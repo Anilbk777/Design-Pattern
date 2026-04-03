@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
 from model import User, Cart, Restaurant,MenuItem, Order
-from  ..strategies.payment_strategy import PaymentStrategy
+from  strategies.payment_strategy import PaymentStrategy
 
 class OrderFactory(ABC):
     @abstractmethod

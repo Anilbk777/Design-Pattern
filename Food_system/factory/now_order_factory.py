@@ -1,8 +1,8 @@
 from typing import List, Optional
 from datetime import datetime
-from order_factory import OrderFactory
+from .order_factory import OrderFactory
 from model import User,Cart,Restaurant,MenuItem,Order, DeliveryOrder,PickupOrder
-from ..strategies.payment_strategy import PaymentStrategy
+from strategies.payment_strategy import PaymentStrategy
 
 
 class NowOrderFactory(OrderFactory):
