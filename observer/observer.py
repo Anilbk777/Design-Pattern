@@ -57,3 +57,13 @@ class FitnessData(FitnessDataSubject):
 
         print("\nFitnessData: Daily reset performed.")
         self.notify()
+
+    def get_steps(self):
+        return self.steps
+    
+    def get_active_minutes(self):
+        return self.active_minutes
+    
+    def get_calories(self):
+        return self.calories
+
