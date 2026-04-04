@@ -30,9 +30,9 @@ class FitnessData(FitnessDataSubject):
     def register_observer(self, observer:FitnessDataObserver):
         if not isinstance(observer, FitnessDataObserver):
             raise ValueError("Give observer is not an instance of FitnessDataObserver")
-        
+
         self.observers.append(observer)
-    
+
     def remove_observer(self,observer:FitnessDataObserver):
         self.observers.remove(observer)
 
@@ -47,3 +47,13 @@ class FitnessData(FitnessDataSubject):
 
         print(f"\nFitnessData: New data received – Steps: {steps}, "
             f"Active Minutes: {active_minutes}, Calories: {calories}")
+
+        self.notify()
+
+    def daily_reset(self):
+        self.steps = 0
+        self.active_minutes = 0
+        self.calories = 0.0
+
+        print("\nFitnessData: Daily reset performed.")
+        self.notify()
