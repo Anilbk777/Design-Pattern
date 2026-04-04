@@ -67,3 +67,12 @@ class FitnessData(FitnessDataSubject):
     def get_calories(self):
         return self.calories
 
+
+class LiveActivityDisplay(FitnessDataObserver):
+
+    def update(self, sub: FitnessData):
+        print(
+            f"Live Display -> Steps: {sub.get_steps()},"
+            f"| Active Minutes: {sub.get_active_minutes()} "
+            f"| Calories: {sub.get_calories()}"
+        )
