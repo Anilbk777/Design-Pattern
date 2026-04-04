@@ -78,9 +78,23 @@ class LiveActivityDisplay(FitnessDataObserver):
         )
 
 class ProgressLogger(FitnessDataObserver):
-    def update(self, subejct: FitnessData):
+    def update(self, subject: FitnessData):
         print(
-            f"Logger → Saving to DB: Steps={subejct.get_steps()}, "
-            f"ActiveMinutes={subejct.get_active_minutes()}, "
-            f"Calories={subejct.get_calories()}"
+            f"Logger → Saving to DB: Steps={subject.get_steps()}, "
+            f"ActiveMinutes={subject.get_active_minutes()}, "
+            f"Calories={subject.get_calories()}"
         )
+
+class GoalNotifier(FitnessDataObserver):
+
+    def __init__(self):
+        self.step_goal = 10000
+        self.goal_reached = False
+
+    def update(self, subject:FitnessData):
+        if subject.get_steps >= self.step_goal and not self.goal_reached:
+            print(f"Notifier -> Goal Reached! You've hit {self.step_goal} steps!")
+            self.goal_reached = True
+
+    def reset(self):
+        self.goal_reached = False
