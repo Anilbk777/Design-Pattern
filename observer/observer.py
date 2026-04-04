@@ -92,7 +92,7 @@ class GoalNotifier(FitnessDataObserver):
         self.goal_reached = False
 
     def update(self, subject:FitnessData):
-        if subject.get_steps >= self.step_goal and not self.goal_reached:
+        if subject.get_steps() >= self.step_goal and not self.goal_reached:
             print(f"Notifier -> Goal Reached! You've hit {self.step_goal} steps!")
             self.goal_reached = True
 
