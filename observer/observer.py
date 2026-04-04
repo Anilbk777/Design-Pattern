@@ -98,3 +98,27 @@ class GoalNotifier(FitnessDataObserver):
 
     def reset(self):
         self.goal_reached = False
+
+
+def demo():
+    fitness_data = FitnessData()
+
+    display = LiveActivityDisplay()
+    logger = ProgressLogger()
+    notifier = GoalNotifier()
+
+    fitness_data.register_observer(display)
+    fitness_data.register_observer(logger)
+    fitness_data.register_observer(notifier)
+
+    fitness_data.new_fitness_data_pushed(500, 5, 20)
+    fitness_data.new_fitness_data_pushed(9800, 85, 350)
+    fitness_data.new_fitness_data_pushed(10100, 90, 380)
+
+    fitness_data.remove_observer(logger)
+    notifier.reset()
+    fitness_data.daily_reset()
+
+
+if __name__ == "__main__":
+    demo()
