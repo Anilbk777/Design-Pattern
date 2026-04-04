@@ -24,7 +24,7 @@ class FitnessData(FitnessDataSubject):
     def __init__(self):
         self.steps = 0
         self.active_minutes = 0
-        self.calories = 0
+        self.calories = 0.0
         self.observers :list[FitnessDataObserver] = []
 
     def register_observer(self, observer:FitnessDataObserver):
@@ -33,3 +33,17 @@ class FitnessData(FitnessDataSubject):
         
         self.observers.append(observer)
     
+    def remove_observer(self,observer:FitnessDataObserver):
+        self.observers.remove(observer)
+
+    def notify(self):
+        for observer in self.observers:
+            observer.update(self)
+
+    def new_fitness_data_pushed(self, steps:int, active_minutes:int,calories:float):
+        self.steps = steps
+        self.active_minutes = active_minutes
+        self.calories = calories
+
+        print(f"\nFitnessData: New data received – Steps: {steps}, "
+            f"Active Minutes: {active_minutes}, Calories: {calories}")
