@@ -76,3 +76,11 @@ class LiveActivityDisplay(FitnessDataObserver):
             f"| Active Minutes: {sub.get_active_minutes()} "
             f"| Calories: {sub.get_calories()}"
         )
+
+class ProgressLogger(FitnessDataObserver):
+    def update(self, subejct: FitnessData):
+        print(
+            f"Logger → Saving to DB: Steps={subejct.get_steps()}, "
+            f"ActiveMinutes={subejct.get_active_minutes()}, "
+            f"Calories={subejct.get_calories()}"
+        )
