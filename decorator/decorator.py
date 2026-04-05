@@ -47,3 +47,20 @@ class UnderLineDecorator(ITextDecorator):
 
     def render(self) -> str:
         return f"<u> {self.text_view.render()} </u>"
+
+
+if __name__ == "__main__":
+    text = PlainTextView("Hello world")
+    print(f"Plain text: {text.render()}")
+
+    bold_text = BoldDecorator(text)
+    print(f"Bold text: {bold_text.render()}")
+
+    italic_text = ItalicDecorator(text)
+    print(f"Italic text: {italic_text.render()}")
+
+    underline_text = UnderLineDecorator(text)
+    print(f"Under line text: {underline_text.render()}")
+
+    all_styles = UnderLineDecorator(ItalicDecorator(BoldDecorator(text)))
+    print(f"All style text: {all_styles.render()}")
