@@ -1,5 +1,6 @@
 from interface.notification_decorator import NotificationDecorator
 from datetime import datetime
+from interface.notification_interface import NotificationInterface
 
 class TimeStampDecorator(NotificationDecorator):
 

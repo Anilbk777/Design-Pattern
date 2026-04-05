@@ -8,6 +8,7 @@ class NotificationService:
         self._observable = NotificationObservable()
         self._history:list[NotificationInterface] = []
 
+    @classmethod    
     def get_instance(cls):
         if cls._instance is None:
             cls._instance = NotificationService()

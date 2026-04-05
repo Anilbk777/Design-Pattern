@@ -1,4 +1,4 @@
-from notification.notification_service import NotificationService
+from notification_service import NotificationService
 from notification.notification_engine import NotificationEngine
 from strategy.notification_strategy import EmailNotificationStrategy, SMSNotificationStrategy, PushNotificationStrategy
 from notification.logger import Logger
