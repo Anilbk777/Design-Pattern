@@ -4,7 +4,7 @@ from interface.notification_interface import NotificationInterface
 
 class NotificationObservable(ObservableInterface):
     def __init__(self):
-        self._notification: NotificationInterface = None
+        # self._notification: NotificationInterface = None
         self._observers: list[ObserverInterface] = []
 
     def register_observer(self, observer: ObserverInterface):
@@ -24,8 +24,9 @@ class NotificationObservable(ObservableInterface):
     def set_notification(self, notification: NotificationInterface):
         if not isinstance(notification, NotificationInterface):
             raise TypeError("Notification must be an instance of NotificationInterface")
-        self._notification = notification
+        # self._notification = notification
+        self._message = notification.get_content()
         self.notify_observers()
 
     def get_notification(self):
-        return self._notification
+        return self._message

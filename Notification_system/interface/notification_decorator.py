@@ -6,5 +6,5 @@ class NotificationDecorator(NotificationInterface):
         self._notification = notification
 
     @abstractmethod
-    def get_content(self, message: str):
+    def get_content(self):
         pass
