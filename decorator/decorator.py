@@ -64,3 +64,4 @@ if __name__ == "__main__":
 
     all_styles = UnderLineDecorator(ItalicDecorator(BoldDecorator(text)))
     print(f"All style text: {all_styles.render()}")
+    
