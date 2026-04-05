@@ -38,3 +38,12 @@ class ItalicDecorator(ITextDecorator):
 
     def render(self) -> str:
         return f"<i> {self.text_view.render()} </i>"
+
+
+class UnderLineDecorator(ITextDecorator):
+
+    def __init__(self, text_view: ITextView):
+        super().__init__(text_view)
+
+    def render(self) -> str:
+        return f"<u> {self.text_view.render()} </u>"
