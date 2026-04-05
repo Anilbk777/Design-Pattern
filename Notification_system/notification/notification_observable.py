@@ -5,6 +5,7 @@ from interface.notification_interface import NotificationInterface
 class NotificationObservable(ObservableInterface):
     def __init__(self):
         # self._notification: NotificationInterface = None
+        self._message: str = None
         self._observers: list[ObserverInterface] = []
 
     def register_observer(self, observer: ObserverInterface):
