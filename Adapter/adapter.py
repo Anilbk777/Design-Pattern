@@ -24,3 +24,21 @@ class CheckOutService:
             print(f"Transaction ID: {self._processor.get_transaction_id()}")
         else:
             print("Payment failed")
+
+class LegacyGateway:
+    def __init__(self):
+        self._transaction_refrence = None
+        self._payment_successful = False
+
+    def execute_transaction(self, amount:float, currency:str):
+        print(f"Processing legacy transaction: {currency} {amount}")
+        self._transaction_refrence = f"LEG-{hash(amount)}"
+        self._payment_successful = True
+
+    def get_transaction_refrence(self) -> str:
+        return self._transaction_refrence
+
+    def is_payment_successful(self) -> bool:
+        return self._payment_successful
+
+
