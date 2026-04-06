@@ -56,4 +56,8 @@ class LegacyAdapter(PaymentProcessor):
         return self._legacy_gateway.get_transaction_refrence()
 
 
-
+if __name__ == "__main__":
+    legacy_gateway = LegacyGateway()
+    adapter = LegacyAdapter(legacy_gateway)
+    checkout_service = CheckOutService(adapter)
+    checkout_service.checkout(100, "USD")
