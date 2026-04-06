@@ -42,3 +42,18 @@ class LegacyGateway:
         return self._payment_successful
 
 
+class LegacyAdapter(PaymentProcessor):
+    def __init__(self, legacy_gateway:LegacyGateway):
+        self._legacy_gateway = legacy_gateway
+
+    def process_payment(self, amount:float, currency:str):
+        self._legacy_gateway.execute_transaction(amount,currency)
+
+    def is_payment_successful(self) -> bool:
+        return self._legacy_gateway.is_payment_successful()
+
+    def get_transaction_id(self) -> str:
+        return self._legacy_gateway.get_transaction_refrence()
+
+
+
