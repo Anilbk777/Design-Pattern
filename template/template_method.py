@@ -52,3 +52,16 @@ class DecisionTreeTrainer(ModelTrainer):
     def evaluate_model(self) -> None:
         logging.info("[DecisionTree] Computing classification report")
 
+
+def main():
+    logging.info("=== Neural Network Training ===")
+    nn_trainer = NeuralNetworkTrainer()
+    nn_trainer.train_pipeline("data/images/")
+
+    logging.info("\n=== Decision Tree Training ===")
+    dt_trainer = DecisionTreeTrainer()
+    dt_trainer.train_pipeline("data/iris.csv")
+
+
+if __name__ == "__main__":
+    main()
