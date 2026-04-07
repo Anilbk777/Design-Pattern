@@ -33,3 +33,13 @@ class ModelTrainer(ABC):
     def save_model(self) -> None:
         logging.info("[Common] Saving model to disk as default format")
 
+
+class NeuralNetworkTrainer(ModelTrainer):
+    def train_model(self) -> None:
+        logging.info("[NeuralNet] Training Neural Network for 100 epochs")
+
+    def evaluate_model(self) -> None:
+        logging.info("[NeuralNet] Evaluating accuracy and loss")
+
+    def save_model(self) -> None:
+        logging.info("[NeuralNet] Saving weights to .h5 file")
