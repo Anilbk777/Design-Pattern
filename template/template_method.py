@@ -43,3 +43,12 @@ class NeuralNetworkTrainer(ModelTrainer):
 
     def save_model(self) -> None:
         logging.info("[NeuralNet] Saving weights to .h5 file")
+
+
+class DecisionTreeTrainer(ModelTrainer):
+    def train_model(self) -> None:
+        logging.info("[DecisionTree] Building tree with max_depth=5")
+
+    def evaluate_model(self) -> None:
+        logging.info("[DecisionTree] Computing classification report")
+
