@@ -3,22 +3,27 @@ from abc import ABC, abstractmethod
 class Engine(ABC):
 
     @abstractmethod
-    def start():
+    def start(self):
         pass
 
+
 class PetrolEngine(Engine):
-    
-    def start():
+
+    def start(self):
         print("Petrol Engine start.")
+
 
 class DieselEngine(Engine):
 
-    def start():
+    def start(self):
         print("Diesel Engine start.")
 
+
 class ElectricEngine(Engine):
-    def start():
+
+    def start(self):
         print("Electric Engine start.")
+
 
 class Car(ABC):
 
@@ -27,7 +32,15 @@ class Car(ABC):
         self.engine = engine
 
     @abstractmethod
-    def  drive():
+    def drive(self):
         pass
 
 
+class Sedan(Car):
+
+    def __init__(self, name:str, engine:Engine):
+        super().__init__(name, engine)
+
+    def drive(self):
+        self.engine.start()
+        print(f"Driving the {self.name} car in the highway.")
