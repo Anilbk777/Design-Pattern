@@ -53,3 +53,10 @@ class SUV(Car):
     def drive(self):
         self.engine.start()
         print(f"Driving the {self.name} car in the highway.")
+
+class BYD(Car):
+    def __init__(self, name:str, engine:Engine):
+        super().__init__(name, engine)
+
+    def drive(self):
+        print(f"Driving the {self.name} car in the highway.")
