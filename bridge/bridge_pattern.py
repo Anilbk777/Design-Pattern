@@ -59,6 +59,7 @@ class BYD(Car):
         super().__init__(name, engine)
 
     def drive(self):
+        self.engine.start()
         print(f"Driving the {self.name} car in the highway.")
 
 
