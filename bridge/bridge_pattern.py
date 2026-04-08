@@ -60,3 +60,20 @@ class BYD(Car):
 
     def drive(self):
         print(f"Driving the {self.name} car in the highway.")
+
+
+if __name__ == "__main__":
+    petrol_engine = PetrolEngine()
+    diesel_engine = DieselEngine()
+    eletric_engine = ElectricEngine()
+
+    sedan_car = Sedan("SEDAN",petrol_engine)
+    sedan_car.drive()
+
+    suv_car1 = SUV("SUV",petrol_engine)
+    suv_car1.drive()
+    suv_car2 = SUV("SUV", diesel_engine)
+    suv_car2.drive()
+
+    byd_car = BYD("BYD-2026", eletric_engine)
+    byd_car.drive()
