@@ -19,3 +19,15 @@ class DieselEngine(Engine):
 class ElectricEngine(Engine):
     def start():
         print("Electric Engine start.")
+
+class Car(ABC):
+
+    def __init__(self, name:str, engine:Engine):
+        self.name = name
+        self.engine = engine
+
+    @abstractmethod
+    def  drive():
+        pass
+
+
