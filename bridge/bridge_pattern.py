@@ -11,4 +11,7 @@ class PetrolEngine(Engine):
     def start():
         print("Petrol Engine start.")
 
-        
+class DieselEngine(Engine):
+
+    def start():
+        print("Diesel Engine start.")
