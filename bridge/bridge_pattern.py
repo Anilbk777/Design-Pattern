@@ -6,3 +6,9 @@ class Engine(ABC):
     def start():
         pass
 
+class PetrolEngine(Engine):
+    
+    def start():
+        print("Petrol Engine start.")
+
+        
