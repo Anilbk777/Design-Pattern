@@ -47,3 +47,12 @@ class AuthorizationHandler(Handler):
             return False
         print("Authorization Passed")
         return True
+
+
+class RateLimitHandler(Handler):
+    def _process(self, request: Request) -> bool:
+        if request.request_count > 5:
+            print("Rate Limit Exceeded")
+            return False
+        print("Rate Limit OK")
+        return True
