@@ -13,7 +13,7 @@ class Request:
 
 class Handler(ABC):
     def __init__(self):
-        self.next_handler: Optional["Handler"] | None = None
+        self._next: Optional["Handler"] = None  
 
     def set_next(self, handler: "Handler") -> "Handler":
         self._next = handler
@@ -21,9 +21,9 @@ class Handler(ABC):
 
     def handle(self, request: Request):
         if not self._process(request):
-            return  
+            return
 
-        if self._next:
+        if self._next:  
             return self._next.handle(request)
 
     @abstractmethod
