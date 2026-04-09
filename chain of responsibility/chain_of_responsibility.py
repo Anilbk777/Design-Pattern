@@ -83,3 +83,17 @@ def build_pipeline():
     auth.set_next(authz).set_next(rate).set_next(validate).set_next(business)
 
     return auth
+
+
+if __name__ == "__main__":
+    pipeline = build_pipeline()
+
+    req = Request(
+        user="Anil",
+        token="valid_token",
+        role="admin",
+        request_count=3,
+        payload={"data": "hello"},
+    )
+
+    pipeline.handle(req)
