@@ -56,3 +56,12 @@ class RateLimitHandler(Handler):
             return False
         print("Rate Limit OK")
         return True
+
+
+class ValidationHandler(Handler):
+    def _process(self, request: Request) -> bool:
+        if not isinstance(request.payload, dict):
+            print("Invalid Payload")
+            return False
+        print("Validation Passed")
+        return True
