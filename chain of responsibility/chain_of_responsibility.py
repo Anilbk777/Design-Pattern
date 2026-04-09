@@ -65,3 +65,9 @@ class ValidationHandler(Handler):
             return False
         print("Validation Passed")
         return True
+
+
+class BusinessHandler(Handler):
+    def _process(self, request: Request) -> bool:
+        print("Processing Business Logic")
+        return True
