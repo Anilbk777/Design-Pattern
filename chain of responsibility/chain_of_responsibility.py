@@ -29,3 +29,12 @@ class Handler(ABC):
     @abstractmethod
     def _process(self, request: Request) -> bool:
         pass
+
+
+class AuthenticationHandler(Handler):
+    def _process(self, request: Request) -> bool:
+        if request.token != "valid_token":
+            print("Authentication Failed")
+            return False
+        print("Authentication Passed")
+        return True
