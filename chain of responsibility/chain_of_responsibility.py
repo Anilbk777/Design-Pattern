@@ -38,3 +38,12 @@ class AuthenticationHandler(Handler):
             return False
         print("Authentication Passed")
         return True
+
+
+class AuthorizationHandler(Handler):
+    def _process(self, request: Request) -> bool:
+        if request.role != "admin":
+            print("Authorization Failed")
+            return False
+        print("Authorization Passed")
+        return True
