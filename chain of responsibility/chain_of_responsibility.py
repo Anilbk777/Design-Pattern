@@ -71,3 +71,15 @@ class BusinessHandler(Handler):
     def _process(self, request: Request) -> bool:
         print("Processing Business Logic")
         return True
+
+
+def build_pipeline():
+    auth = AuthenticationHandler()
+    authz = AuthorizationHandler()
+    rate = RateLimitHandler()
+    validate = ValidationHandler()
+    business = BusinessHandler()
+
+    auth.set_next(authz).set_next(rate).set_next(validate).set_next(business)
+
+    return auth
