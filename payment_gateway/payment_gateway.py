@@ -150,5 +150,19 @@ class GatewayFactory:
             razorpay_gateway = RazorpayGateway()
             return PaymentGatewayProxy(razorpay_gateway, 2)
         
+class PaymentService:
+    def __init__(self):
+        self.payment_gateway :Optional[PaymentGateway] | None = None
+
+    def set_gateway(self, payment_gateway: PaymentGateway):
+        self.payment_gateway = payment_gateway
+
+    def process_payment(self, payment_request:PaymentRequest):
+        if not self.payment_gateway:
+            print(f"[PaymentService] No payment gateway selected.")
+            return False
+
+        return self.payment_gateway.process_payment(payment_request)
     
+        
 
