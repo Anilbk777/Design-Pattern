@@ -134,3 +134,21 @@ class PaymentGatewayProxy(PaymentGateway):
     def confirm_payment(self, payment_request):
         return self.payment_gateway.confirm_payment(payment_request)
     
+
+class GatewayType(Enum):
+    PAYTM = "paytm"
+    RAZORPAY = "razorpay"
+
+
+class GatewayFactory:
+    def get_getway(self, type: GatewayType) -> PaymentGateway:
+        if type == GatewayType.PAYTM:
+            paytm_gateway = PaytmGateway()
+            return PaymentGatewayProxy(paytm_gateway,4)
+        
+        else:
+            razorpay_gateway = RazorpayGateway()
+            return PaymentGatewayProxy(razorpay_gateway, 2)
+        
+    
+
