@@ -77,8 +77,30 @@ class PaytmGateway(PaymentGateway):
         print(f"[Paytm] initiating payment of {payment_request.amount} {payment_request.currency} for {payment_request.sender}")
 
         return self.banking_system.process_payment(payment_request.amount)
-    
+
     def confirm_payment(self,payment_request:PaymentRequest) -> bool:
         print(f"[Paytm] Confirming payment for {payment_request.sender}")
         return True
-    
+
+
+class RazorpayGateway(PaymentGateway):
+    def __init__(self):
+        self.banking_system = RazorpayBankingSystem()
+
+    def validate_payment(self, payment_request: PaymentRequest) -> bool:
+        print(f"[Razorpay] validating payment for {payment_request.sender}")
+
+        if payment_request.amount <= 0:
+            return False
+        return True
+
+    def initiate_payment(self, payment_request: PaymentRequest) -> bool:
+        print(
+            f"[Razorpay] initiating payment of {payment_request.amount} {payment_request.currency} for {payment_request.sender}"
+        )
+
+        return self.banking_system.process_payment(payment_request.amount)
+
+    def confirm_payment(self, payment_request: PaymentRequest) -> bool:
+        print(f"[Razorpay] Confirming payment for {payment_request.sender}")
+        return True
