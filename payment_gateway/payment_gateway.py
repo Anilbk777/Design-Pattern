@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
+from enum import Enum
 from typing import Optional
 import random
 
@@ -104,3 +105,32 @@ class RazorpayGateway(PaymentGateway):
     def confirm_payment(self, payment_request: PaymentRequest) -> bool:
         print(f"[Razorpay] Confirming payment for {payment_request.sender}")
         return True
+
+class PaymentGatewayProxy(PaymentGateway):
+    def __init__(self,payment_gateway:PaymentGateway, max_retries:int):
+        self.payment_gateway = payment_gateway
+        self.max_retries = max_retries
+
+    def process_payment(self, payment_request:PaymentRequest) -> bool:
+        result = False
+        for attempt in range(self.max_retries + 1):
+            if (attempt > 0):
+                print(f"[Proxy] Retrying payment (attemp - {attempt}) for {payment_request.sender}.")
+            
+            result = self.payment_gateway.process_payment(payment_request)
+            if result: break 
+
+        if (not result):
+            print(f"[Proxy] Payment failed after {self.max_retries} attempts for {payment_request.sender}")
+        
+        return result
+    
+    def validate_payment(self, payment_request):
+        return self.payment_gateway.validate_payment(payment_request)
+    
+    def initiate_payment(self, payment_request):
+        return self.payment_gateway.initiate_payment(payment_request)
+
+    def confirm_payment(self, payment_request):
+        return self.payment_gateway.confirm_payment(payment_request)
+    
