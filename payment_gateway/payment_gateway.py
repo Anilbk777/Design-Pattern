@@ -133,7 +133,7 @@ class PaymentGatewayProxy(PaymentGateway):
 
     def confirm_payment(self, payment_request):
         return self.payment_gateway.confirm_payment(payment_request)
-    
+
 
 class GatewayType(Enum):
     PAYTM = "paytm"
@@ -149,7 +149,7 @@ class GatewayFactory:
         else:
             razorpay_gateway = RazorpayGateway()
             return PaymentGatewayProxy(razorpay_gateway, 2)
-        
+
 class PaymentService:
     def __init__(self):
         self.payment_gateway :Optional[PaymentGateway] | None = None
@@ -163,6 +163,30 @@ class PaymentService:
             return False
 
         return self.payment_gateway.process_payment(payment_request)
-    
-        
 
+
+class PaymentController:
+
+    def handle_payment(self, gateway_type:GatewayType, payment_request: PaymentRequest):
+        payment_gateway = GatewayFactory().get_getway(gateway_type)
+        PaymentService().set_gateway(payment_gateway)
+        return PaymentService().process_payment(payment_request)
+
+
+if __name__ == "__main__":
+    payment_request1 = PaymentRequest("Ram","shyam",500,"NRP")
+
+    print("Processing via Paytm")
+    print("="*60)
+    payment_controller = PaymentController()
+    result1 = payment_controller.handle_payment("paytm",payment_request1)
+    print("SUCCESS" if result1 else "FAIL")
+    print("=" * 60)
+
+    payment_request2 = PaymentRequest("David", "John", 500, "USD")
+    print("Processing via Razorpay")
+    print("=" * 60)
+    payment_controller = PaymentController()
+    result2 = payment_controller.handle_payment("razorpay", payment_request2)
+    print("SUCCESS" if result2 else "FAIL")
+    print("=" * 60)
