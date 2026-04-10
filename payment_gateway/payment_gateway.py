@@ -36,7 +36,6 @@ class PaymentGateway(ABC):
     def __init__(self):
         self.banking_system : Optional[BankingSystem] | None = None
 
-    @abstractmethod
     def process_payment(self, payment_request:PaymentRequest) -> bool:
         if not (self.validate_payment(payment_request)):
             print(f"[PaymentGateway] validation failed for {payment_request.sender}.")
@@ -61,3 +60,25 @@ class PaymentGateway(ABC):
     @abstractmethod
     def confirm_payment(self,payment_request:PaymentRequest) -> bool:
         pass
+
+
+class PaytmGateway(PaymentGateway):
+    def __init__(self):
+        self.banking_system = PaytmBankingSystem()
+
+    def validate_payment(self, payment_request:PaymentRequest) -> bool:
+        print(f"[Paytm] validating payment for {payment_request.sender}")
+
+        if payment_request.amount <= 0 or payment_request.currency != "NRP":
+            return False
+        return True
+
+    def initiate_payment(self, payment_request:PaymentRequest) -> bool:
+        print(f"[Paytm] initiating payment of {payment_request.amount} {payment_request.currency} for {payment_request.sender}")
+
+        return self.banking_system.process_payment(payment_request.amount)
+    
+    def confirm_payment(self,payment_request:PaymentRequest) -> bool:
+        print(f"[Paytm] Confirming payment for {payment_request.sender}")
+        return True
+    
