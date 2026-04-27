@@ -1,10 +1,9 @@
-from pydantic import validate_call
+
 class BankAccount:
     def __init__(self, owner: str, balance: float = 0):
         self.owner = owner
         self.balance = balance
 
-    @validate_call
     def deposit(self, amount:float):
         if amount < 0:
             print("Invalid deposit")
